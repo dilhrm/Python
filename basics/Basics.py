@@ -27,6 +27,7 @@ while(running):
         password = input("What is the password?") 
         fileOUT.write(webname)
         fileOUT.write(password) 
+        fileOUT.close()
 
     if(choice == 'r'): 
         print(1)
