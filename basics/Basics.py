@@ -1,4 +1,4 @@
-fname = "basics/passwords.txt"
+fname = "passwords.txt"
 
 text = " "
 running = True 
@@ -45,13 +45,13 @@ def numOf(site, list):
 
 while(running):
     reset()
-    for i in range(3):
+    for i in range(2):
         print()
     choice = input("What do you want to do? \na to add password. \nr to retrieve password. \nl to look at a list of webiste names \nc to change password. \nf to close program.") 
     if(choice == 'f'): 
         running = False 
 
-    if(choice == 'a'): 
+    elif(choice == 'a'): 
         fileOUT = open(fname,'a') 
         webname = input("What is the name of the website? ") 
         password = input("What is the password? ") 
@@ -59,23 +59,23 @@ while(running):
         fileOUT.write(password + "\n") 
         fileOUT.close()
 
-    if(choice == 'r'): 
+    elif(choice == 'r'): 
         readPasswords()
-        website = input("What is the password? ") 
-        numChoice = numOf(website) 
+        website = input("What is the website? ") 
+        numChoice = numOf(website, list_websites) 
         if(numChoice == -1): 
             print("Website does not exist. Ensure website is spelled properly and/or exists.")
         else: 
             print(list_passwords[numChoice])
         
-    if(choice == 'c'): 
+    elif(choice == 'c'): 
         readPasswords() 
         website = input("What is the website? ") 
         numChoice = numOf(password) 
         password = input("New password? ")
         
         
-    if(choice == 'l'): 
+    elif(choice == 'l'): 
         fileIN = open(fname,'r') 
         text = fileIN.readline() 
         while(text != ""): 
@@ -83,3 +83,6 @@ while(running):
             text = fileIN.readline() 
             text = fileIN.readline() 
         fileIN.close() 
+
+    else: 
+        print("That wasn't one of the options. ")
